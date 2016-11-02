@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Rows>
+  <TestSet>
+    <Trigger-ThingId>testpir1</Trigger-ThingId>
+    <Trigger-ChannelId>state</Trigger-ChannelId>
+  </TestSet>
+  <TestSet>
+    <Trigger-ThingId>testwindow1</Trigger-ThingId>
+    <Trigger-ChannelId>state</Trigger-ChannelId>
+  </TestSet>
+</Rows>

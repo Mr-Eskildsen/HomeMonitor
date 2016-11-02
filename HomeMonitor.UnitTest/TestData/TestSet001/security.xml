@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<security>
+
+  <notifications>
+    
+  </notifications>
+
+  <zones>
+
+    <zone id="zone1" name="Zone 1">
+      <devices>
+        <pir thing-id="testpir1" channel-id="state" min-sensitivity="1"/>
+        <perimeter thing-id="testwindow1" channel-id="state" min-sensitivity="2"/>
+        <switch thing-id="testswitch1" channel-id="state1" timeout="5" min-sensitivity="2"/>
+        <switch thing-id="testswitch1" channel-id="state2" timeout="10" min-sensitivity="5"/>
+
+      </devices>
+    </zone>
+  </zones>
+
+
+</security>

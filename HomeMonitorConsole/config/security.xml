@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<security>
+ 
+  <notifications>
+<!--    <mail host="smtp.googlemail.com" port="587" enable-ssl="true" from="openhab@eskildsen.name" user-id="kaervej23@gmail.com" password="ehgvryweuwhhdwha" levelMin="Alert" levelMax="Alert" subject="[TEST] HomeMonitor Notification" >
+      <to address="martin@eskildsen.name"/>
+    </mail>
+    -->
+    <!-- <sms levelMin="Alert" levelMax="Alert"></sms>-->
+  </notifications>
+
+  <zones>
+
+    <zone id="zone1" name="Zone 1" description="Perimeter">
+      <devices>
+        <perimeter thing-id="officewindow1" channel-id="state" min-sensitivity="6"/>
+        <switch thing-id="terraceswitch" channel-id="state1" timeout="10" min-sensitivity="6"/>
+      </devices>
+    </zone>
+    
+<!--    <zone id="zone1" name="Zone 1" description="Perimeter">
+      <devices>
+        <perimeter thing-id="officewindow1" channel-id="state" min-sensitivity="5"/>
+        <perimeter thing-id="bedroomwindow1" channel-id="state" />
+        <perimeter thing-id="sofiewindow1" channel-id="state" />
+        <perimeter thing-id="frederikwindow1" channel-id="state" />
+        <perimeter thing-id="ceciliewindow1" channel-id="state" />
+      </devices>
+    </zone>
+
+    <zone id="zone2" name="Zone 2" description="Gangen">
+      <devices>
+        <pir thing-id="hallwaypir1" channel-id="state" />
+        <pir thing-id="hallwaypir2" channel-id="state" />
+      </devices>
+    </zone>
+
+    <zone id="zone3" name="Zone 3" description="Terassen">
+      <devices>
+        <pir thing-id="terracepir1" channel-id="state" min-sensitivity="2"/>
+        <perimeter thing-id="officewindow1" channel-id="state" min-sensitivity="6"/>
+        <perimeter thing-id="frederikwindow1" channel-id="state" min-sensitivity="6"/>
+        <switch thing-id="gableswitch" channel-id="state1" timeout="120" min-sensitivity="5"/>
+        <switch thing-id="terraceswitch" channel-id="state1" timeout="120" min-sensitivity="2"/>
+        
+      </devices>
+    </zone>
+    <zone id="zone4" name="Zone 4">
+      <devices>
+        <pir thing-id="terracepir1" channel-id="state" min-sensitivity=""/>
+        <perimeter thing-id="officewindow1" channel-id="state" min-sensitivity="2"/>
+        <switch thing-id="terraceswitch" channel-id="state1" timeout="10" min-sensitivity="2"/>
+      </devices>
+    </zone>
+-->
+
+    <!--
+
+    <zone id="zone10" name="Zone 10">
+      <devices>
+        <perimeter thing-id="officewindow1" channel-id="state" min-sensitivity="2"/>
+        <switch thing-id="terraceswitch" channel-id="state1" timeout="120"/>
+      </devices>
+    </zone>
+-->
+  </zones>
+
+
+</security>

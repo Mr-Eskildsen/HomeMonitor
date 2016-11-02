@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<things>
+
+  <!-- ************************ -->
+  <!-- Kontor 			-->
+  <!-- ************************ -->
+  <thing id="officewindow1" group="office" name="OfficeWindow1" description="Vindue Kontor">
+    <channel id="state" type="contact"/>
+    <channel id="battery" type="battery"/>
+    <channel id="tamper" type="tamper"/>
+  </thing>
+
+  <!-- ************************ -->
+  <!-- Soveværelse		-->
+  <!-- ************************ -->
+  <thing id="bedroomwindow1" group="bedroom" name="BedroomWindow1" description="Vindue Soveværelse">
+    <channel id="state" type="contact"  sensitivity="perimeter"/>
+    <channel id="battery" type="battery"/>
+    <channel id="tamper" type="tamper"/>
+  </thing>
+
+
+  <!-- ************************ -->
+  <!-- Sofie 			-->
+  <!-- ************************ -->
+  <thing id="sofiewindow1" group="sofie" name="SofieWindow1" description="Vindue Sofie">
+    <channel id="state" type="contact"/>
+    <channel id="battery" type="battery"/>
+    <channel id="tamper" type="tamper"/>
+  </thing>
+
+
+  <!-- ************************ -->
+  <!-- Frederik			-->
+  <!-- ************************ -->
+  <thing id="frederikwindow1" group="frederik" name="FrederikWindow1" description="Vindue Frederik">
+    <channel id="state" type="contact" perimeter="true"/>
+    <channel id="battery" type="battery"/>
+    <channel id="tamper" type="tamper"/>
+  </thing>
+
+
+  <!-- ************************ -->
+  <!-- Cecilie			-->
+  <!-- ************************ -->
+  <thing id="ceciliewindow1" group="cecilie" name="CecilieWindow1" description="Vindue Cecilie">
+    <channel id="state" type="contact" perimeter="true"/>
+    <channel id="battery" type="battery"/>
+    <channel id="tamper" type="tamper"/>
+  </thing>
+
+
+  <!-- ************************ -->
+  <!-- Stue 			-->
+  <!-- ************************ -->
+  <thing id="livingwindow1" group="livingroom" name="LivingroomWindow1" description="Vindue Stuen">
+    <channel id="state" type="contact" perimeter="true"/>
+    <channel id="battery" type="battery"/>
+    <channel id="tamper" type="tamper"/>
+  </thing>
+
+  <thing id="livingwindow2" group="livingroom" name="LivingroomWindow2" description="Vindue Stuen">
+    <channel id="state" type="contact" perimeter="true"/>
+    <channel id="battery" type="battery"/>
+    <channel id="tamper" type="tamper"/>
+  </thing>
+
+  <thing id="livingwindow3" group="livingroom" name="LivingroomWindow3" description="Vindue Stuen">
+    <channel id="state" type="contact" perimeter="true"/>
+    <channel id="battery" type="battery"/>
+    <channel id="tamper" type="tamper"/>
+  </thing>
+
+  <thing id="livingdoor1" group="livingroom" name="Livingroomdoor1" description="Terassedør Stuen">
+    <channel id="state" type="contact" perimeter="true"/>
+    <channel id="battery" type="battery"/>
+    <channel id="tamper" type="tamper"/>
+  </thing>
+
+
+  <!-- ************************ -->
+  <!-- Køkken 			-->
+  <!-- ************************ -->
+
+  <thing id="kitchenwindow1" group="kitchen" name="KitchenWindow1" description="Køkken Vindue">
+    <channel id="state" type="contact" perimeter="true"/>
+    <channel id="battery" type="battery"/>
+    <channel id="tamper" type="tamper"/>
+  </thing>
+
+
+  <!-- ************************ -->
+  <!-- Forgang 			-->
+  <!-- ************************ -->
+  <thing id="entrancedoor1" group="entrance" name="EntranceDoor1" description="Hoveddør">
+    <channel id="state" type="contact" perimeter="true"/>
+    <channel id="battery" type="battery"/>
+    <channel id="tamper" type="tamper"/>
+  </thing>
+
+
+  <!-- ************************ -->
+  <!-- Badeværelse		-->
+  <!-- ************************ -->
+
+  <thing id="bathroomwindow1" group="kitchen" name="BathroomWindow1" description="Badeværelse Vindue">
+    <channel id="state" type="contact" perimeter="true"/>
+    <channel id="battery" type="battery"/>
+    <channel id="tamper" type="tamper"/>
+  </thing>
+
+
+  <!-- ************************ -->
+  <!-- Baggang 			-->
+  <!-- ************************ -->
+  <thing id="backentrancedoor1" group="backentrance" name="BackentranceDoor1" description="Bagdør">
+    <channel id="state" type="contact" perimeter="true"/>
+    <channel id="battery" type="battery"/>
+    <channel id="tamper" type="tamper"/>
+  </thing>
+
+  <thing id="backentrancewindow1" group="backentrance" name="BackentranceWindow1" description="Baggang Vindue">
+    <channel id="state" type="contact" perimeter="true"/>
+    <channel id="battery" type="battery"/>
+    <channel id="tamper" type="tamper"/>
+  </thing>
+
+
+
+  <!-- ************************ -->
+  <!-- Gang 			-->
+  <!-- ************************ -->
+  <thing id="hallwaypir1" group="hallway" name="HallwayPir1" description="Gang Pir 1">
+    <channel id="state" type="contact"/>
+    <channel id="battery" type="battery"/>
+    <channel id="tamper" type="tamper"/>
+  </thing>
+
+  <thing id="hallwaypir2" group="hallway" name="HallwayPir2" description="Gang Pir 2">
+    <channel id="state" type="contact"/>
+    <channel id="battery" type="battery"/>
+    <channel id="tamper" type="tamper"/>
+  </thing>
+
+  <thing id="hallwaywindow1" group="hallway" name="HallwayWindow1" description="Gang Vindue">
+    <channel id="state" type="contact" perimeter="true"/>
+    <channel id="battery" type="battery"/>
+    <channel id="tamper" type="tamper"/>
+  </thing>
+
+
+
+  <!-- ************************ -->
+  <!-- Udendørs			-->
+  <!-- ************************ -->
+  <thing id="terracepir1" group="terrace" name="TerracePir1" description="Terasse Pir 1">
+    <channel id="state" type="contact"/>
+    <channel id="battery" type="battery"/>
+    <channel id="tamper" type="contact"/>
+  </thing>
+
+  <thing id="backyardpir1" group="backyard" name="BackyardPir1" description="Baghave Pir 1">
+    <channel id="state" type="contact"/>
+    <channel id="battery" type="battery"/>
+    <channel id="tamper" type="contact"/>
+  </thing>
+
+
+
+
+  <!-- ************************ -->
+  <!-- Kontakter		-->
+  <!-- ************************ -->
+  <thing id="terraceswitch" group="outdoor" name="TerraceSwitch" description="Terasse Switch ">
+    <channel id="state1" type="switch" />
+    <channel id="state2" type="switch" />
+  </thing>
+
+  <!-- jsr223alarm/mqtt/out/outdoor/switch/gableswitch/state1 -->
+  <thing id="gableswitch" group="outdoor" name="OutdoorSpotLights" description="Outdoor spotlights">
+    <channel id="state1" type="switch" />
+    <channel id="state2" type="switch" />
+  </thing>
+
+</things>

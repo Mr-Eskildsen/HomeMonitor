@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<OrderedTest name="SensorTest" storage="c:\users\martin.kaervej\documents\visual studio 2015\projects\raspberry\homemonitor\homemonitor.unittest\sensortest.orderedtest" id="7d59e8d0-2cf1-423c-ac14-fb04c0f487e3" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestLinks>
+    <TestLink id="cc438f05-6622-7866-fecf-88b7d6acd420" name="TestPirSensor" storage="bin\debug\homemonitor.unittest.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="0b577bbc-2e46-73a7-9de1-dd9c32dde2fc" name="TestContactSensor" storage="bin\debug\homemonitor.unittest.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="69bc5104-2c15-5a11-3c50-396266f81786" name="TestWindowSensor" storage="bin\debug\homemonitor.unittest.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="74d333e9-adfb-b1b5-b5c8-a353f3dc3240" name="TestTamperSensor" storage="bin\debug\homemonitor.unittest.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  </TestLinks>
+</OrderedTest>

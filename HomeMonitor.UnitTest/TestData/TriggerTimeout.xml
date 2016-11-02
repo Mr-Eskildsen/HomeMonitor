@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Rows>
+  <TriggerTimeout>
+    <Trigger-ThingId>testpir1</Trigger-ThingId>
+    <Trigger-ChannelId>state</Trigger-ChannelId>
+  </TriggerTimeout>
+    <TriggerTimeout>
+    <Trigger-ThingId>testwindow1</Trigger-ThingId>
+    <Trigger-ChannelId>state</Trigger-ChannelId>
+  </TriggerTimeout>
+
+</Rows>

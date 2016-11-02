@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<application>
+  <!-- base-outgoing-topic="null" -->
+  <mqtt host="192.168.1.50" port="1883" qos="2" topic-out-alarm="test/mqtt-eventbus/alarm/out" topic-out-device="test/mqtt-eventbus/slave">
+    
+    <!-- Subscribe to all states from contacts and pir sensors-->
+    <mqtt-subscribe topic="mqtt-eventbus/master/+/+/+/state" />
+
+    <!-- Subscribe to alarm specific events (arm, disarm) -->
+    <mqtt-subscribe topic="test/mqtt-eventbus/alarm/in/#"/>
+  </mqtt>
+</application>

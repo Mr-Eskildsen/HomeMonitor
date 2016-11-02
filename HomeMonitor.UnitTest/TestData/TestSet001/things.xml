@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<things>
+  <thing id="testwindow1" group="test" name="TestWindow1" description="Vindue Test">
+    <channel id="state" type="contact" perimeter="true"/>
+    <channel id="battery" type="battery"/>
+    <channel id="tamper" type="tamper"/>
+  </thing>
+
+  
+  
+  <thing id="testpir1" group="test" name="TestPir" description="TestPir 1">
+    <channel id="state" type="contact"/>
+    <channel id="battery" type="battery"/>
+    <channel id="tamper" type="tamper"/>
+  </thing>
+  
+  <thing id="testswitch1" group="test" name="TestSwitch" description="Test Switch ">
+    <channel id="state1" type="switch" />
+    <channel id="state2" type="switch" />
+  </thing>
+  
+</things>
+
