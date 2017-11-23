@@ -146,7 +146,7 @@ namespace HomeMonitor.Mqtt
 
             SecurityStateMessage message = null;
 
-            log.DebugFormat("MQTT Message received. Topic='{0}' Payload='{1}'", Topic, Payload );
+            log.InfoFormat("MQTT Message received. Topic='{0}' Payload='{1}' ThingId='{2}' ChannelId='{3}'", Topic, Payload, thingId, channelId );
             //System Command!
             if (thingId == "system") /*&& (channelId == "command")*/
             {
@@ -192,13 +192,17 @@ namespace HomeMonitor.Mqtt
 
                 //Thing doesn't exist in Registry
                 if (thing == null)
-
+                {
+                    log.WarnFormat("ThingId='{0}' not found for MQTT Message Topic='{1}'", thingId, e.Topic);
                     return;
-
+                }
 
                 Channel ch = thing.getChannel(channelId);
                 if (ch == null)
+                {
+                    log.WarnFormat("ThingId='{0}' doen't have Channel '{1}' (MQTT Message Topic='{2}' Payload='{3}'", thingId, channelId, e.Topic, e.Message);
                     return;
+                }
 
                 //Channel state has changed -> Publish
                 message = new ChannelStateMessage(string.Empty, ch, true, Payload);
