@@ -14,23 +14,19 @@ using System.Threading.Tasks;
 
 namespace HomeMonitor.model.sensor
 {
-    public class SensorContact : SensorGeneric
+    public class ChannelContact : Channel
     {
         private int _score = 0;
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static readonly ILog alarmLog = LogManager.GetLogger(typeof(AlarmExtensions));
         private static readonly ILog stateLog = LogManager.GetLogger(typeof(AlarmExtensions)); //= LogManager.GetLogger("StateLogger");
 
-        public SensorContact(String thingId, ThingConfig thingConfig, ChannelConfig config, IBus bus)
+        public ChannelContact(String thingId, ThingConfig thingConfig, ChannelConfig config, IBus bus)
             : base(thingId, thingConfig, config, bus)
         {
 
         }
-
-        public override int GetScore()
-        {
-            return _score;
-        }
+        
         /* //HEST
         public override void OnSystemEvent(object sender, SystemEventArgs args)
         {

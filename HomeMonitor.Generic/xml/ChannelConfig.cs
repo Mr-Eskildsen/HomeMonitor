@@ -84,6 +84,7 @@ namespace HomeMonitor.Generic.xml
     [XmlRoot("channel")]
     public class ChannelConfig : GenericConfig
     {
+        private string _name = String.Empty;
         public ChannelConfig()
         {
             //Perimeter = false;
@@ -91,6 +92,23 @@ namespace HomeMonitor.Generic.xml
 
         [XmlAttribute("id")]
         public ChannelId Id { get; set; }
+
+
+        [XmlAttribute("name"), DefaultValue("")]
+        public string Name
+        {
+            get
+            {
+                if (String.IsNullOrEmpty(_name))
+                    return Id.ToString();
+                return _name;
+            }
+            set
+            {
+                _name = value;
+            }
+        }
+
 
         [XmlAttribute("type")]
         public ChannelType ChannelType { get; set; }

@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace HomeMonitor.model.sensor
 {
-    public abstract class SensorNumber : SensorGeneric
+    public abstract class ChannelNumber : Channel
     {
         //HEST private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        public SensorNumber(String thingId, ThingConfig thingConfig, ChannelConfig config, IBus bus)
+        public ChannelNumber(String thingId, ThingConfig thingConfig, ChannelConfig config, IBus bus)
                 : base(thingId, thingConfig, config, bus)
         {
             //State = "0";

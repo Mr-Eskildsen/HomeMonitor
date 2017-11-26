@@ -12,7 +12,6 @@ using HomeMonitor.message;
 using MemBus;
 using HomeMonitor.Generic.interfaces;
 using HomeMonitor.interfaces;
-using HomeMonitor.xml;
 using log4net;
 using HomeMonitor.logger;
 
@@ -141,6 +140,8 @@ namespace HomeMonitor.Mqtt
             string Payload = Encoding.Default.GetString(e.Message);
             string Topic = e.Topic;
             string[] arr = e.Topic.Split('/');
+
+            //TODO:: Make detection of thingId and Channel ID more dynamic
             String thingId = arr[arr.Length - 2];
             String channelId = arr[arr.Length - 1];
 

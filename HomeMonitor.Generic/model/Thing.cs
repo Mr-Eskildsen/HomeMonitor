@@ -39,17 +39,7 @@ namespace HomeMonitor.model
             }
             return null;
         }
-
-        //HEST public override void StateChangedEvent(object sender, StateChangedEventArgs args)
-        //HEST {
-        //HEST Console.WriteLine("Something happened to '" + args.ThingId + "' - '" + args.ChannelId + "'");
-        //HEST }
-
-        //HEST protected override GenericItem[] GetChildren()
-        //HEST {
-        //HEST             return Channels.ToArray<GenericItem>();
-
-        //HEST     }
+        
     }
 
 }

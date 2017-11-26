@@ -1,23 +1,24 @@
 ﻿using HomeMonitor.Generic.xml;
 using MemBus;
-//HEST using HomeMonitor.Notification.logger;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
+using log4net;
+using HomeMonitor.logger;
 
 namespace HomeMonitor.model
 {
+
     //http://csharpindepth.com/Articles/General/Singleton.aspx
     public /*sealed*/ class ThingRegistry
     {
+
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         //HEST private static readonly log4net.ILog alarmLog = log4net.LogManager.GetLogger(typeof(AlarmExtensions));
-        
+
         private Dictionary<String, Thing> registryThings = new Dictionary<String, Thing>();
         private Dictionary<String, Channel> registryChannels = new Dictionary<String, Channel>();
         //HEST private Dictionary<String, Zone> registryZones = new Dictionary<String, Zone>();
@@ -34,37 +35,7 @@ namespace HomeMonitor.model
         {
         }
 
-        /*
-        public static ThingsConfig LoadThingsFromXML(String fileName)
-        {
-            //Console.WriteLine("Building Thing Registry.....");
-
-            // Create an instance of the XmlSerializer specifying type and namespace.
-            XmlSerializer serializer = new
-            XmlSerializer(typeof(ThingsConfig));
-
-
-            String appDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            String configDir = Path.Combine(appDir, "config");
-            String filename = Path.Combine(configDir, fileName);
-
-            // A FileStream is needed to read the XML document.
-            FileStream fs = new FileStream(filename, FileMode.Open);
-            */
-            /*            XmlReader reader = XmlReader.Create(fs);
-
-                        // Declare an object variable of the type to be deserialized.
-                        ThingsConfig things;
-
-                        // Use the Deserialize method to restore the object's state.
-                        things = (ThingsConfig)serializer.Deserialize(reader);
-                        fs.Close();
-                        return things;
-                        */
-            //return LoadThingsFromStream<ThingsConfig
-        //}
-
-
+       
         protected static T LoadThingsFromStream<T>(Stream stream)
         {
         
@@ -159,12 +130,13 @@ namespace HomeMonitor.model
            
             foreach (ThingConfig thingConfig in things.Things)
             {
-                //HEST alarmLog.AlarmDebugFormat(thingConfig.Id, "Processing thing Id='{0}'", thingConfig.Id);
+                log.InfoFormat("Processing thing Id='{0}'", thingConfig.Id);
                 Thing thing = new Thing(thingConfig);
 
 
                 foreach (ChannelConfig channelConfig in thingConfig.Channels)
                 {
+                    
                     Channel ch = Channel.Create(thing.Id, thingConfig, channelConfig, bus);
                     
                     if (ch != null)
@@ -174,7 +146,7 @@ namespace HomeMonitor.model
                     }
                     else
                         Console.WriteLine("  OOOOOOOPPPPS");
-                    //HEST alarmLog.AlarmDebugFormat(thingConfig.GetId(), "Sensor '{0}' - '{1}':'{2}' (Perimeter='{3}')", thingConfig.Id, channelConfig.Id, channelConfig.ChannelType, channelConfig.Perimeter);
+                    log.InfoFormat("ThingId='{0}' - ChannelId='{1}': Type='{2}' Perimeter='{3}'", thingConfig.Id, channelConfig.Id, channelConfig.ChannelType, channelConfig.Perimeter);
                 }
                 _AddThing(thing.Id, thing);
             }

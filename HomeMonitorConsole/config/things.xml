@@ -53,25 +53,25 @@
   <!-- ************************ -->
   <!-- Stue 			-->
   <!-- ************************ -->
-  <thing id="livingwindow1" group="livingroom" name="LivingroomWindow1" description="Vindue Stuen">
+  <thing id="livingroomwindow1" group="livingroom" name="LivingroomWindow1" description="Vindue Stuen">
     <channel id="state" type="contact" perimeter="true"/>
     <channel id="battery" type="battery"/>
     <channel id="tamper" type="tamper"/>
   </thing>
 
-  <thing id="livingwindow2" group="livingroom" name="LivingroomWindow2" description="Vindue Stuen">
+  <thing id="livingroomwindow2" group="livingroom" name="LivingroomWindow2" description="Vindue Stuen">
     <channel id="state" type="contact" perimeter="true"/>
     <channel id="battery" type="battery"/>
     <channel id="tamper" type="tamper"/>
   </thing>
 
-  <thing id="livingwindow3" group="livingroom" name="LivingroomWindow3" description="Vindue Stuen">
+  <thing id="livingroomwindow3" group="livingroom" name="LivingroomWindow3" description="Vindue Stuen">
     <channel id="state" type="contact" perimeter="true"/>
     <channel id="battery" type="battery"/>
     <channel id="tamper" type="tamper"/>
   </thing>
 
-  <thing id="livingdoor1" group="livingroom" name="Livingroomdoor1" description="Terassedør Stuen">
+  <thing id="livingroomdoor1" group="livingroom" name="Livingroomdoor1" description="Terassedør Stuen">
     <channel id="state" type="contact" perimeter="true"/>
     <channel id="battery" type="battery"/>
     <channel id="tamper" type="tamper"/>
@@ -157,6 +157,10 @@
     <channel id="state" type="contact"/>
     <channel id="battery" type="battery"/>
     <channel id="tamper" type="contact"/>
+  </thing>
+
+  <thing id="terracepir2" group="terrace" name="TerracePir2" description="Terasse Pir 2">
+    <channel id="state" type="contact"/>
   </thing>
 
   <thing id="backyardpir1" group="backyard" name="BackyardPir1" description="Baghave Pir 1">

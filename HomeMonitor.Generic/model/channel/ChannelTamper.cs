@@ -1,8 +1,5 @@
 ﻿using HomeMonitor.Generic.xml;
-//using HomeMonitor.message;
-using HomeMonitor.model;
 using MemBus;
-using MemBus.Subscribing;
 //HEST using HomeMonitor.Notification.logger;
 using System;
 using System.Collections.Generic;
@@ -12,17 +9,16 @@ using System.Threading.Tasks;
 
 namespace HomeMonitor.model.sensor
 {
-    public abstract class SensorGeneric : Channel
+    public class ChannelTamper : ChannelContact
     {
-        public abstract int GetScore();
+        //HEST private static readonly log4net.ILog alarmLog = log4net.LogManager.GetLogger(typeof(AlarmExtensions));
 
-
-        public SensorGeneric(String thingId, ThingConfig thingConfig, ChannelConfig config, IBus bus)
+        public ChannelTamper(String thingId, ThingConfig thingConfig,  ChannelConfig config, IBus bus)
             : base(thingId, thingConfig, config, bus)
         {
+            //State = ContactStates.CLOSED.ToString();
         }
-
-
-
+        
     }
+
 }

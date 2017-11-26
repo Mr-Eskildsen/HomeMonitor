@@ -33,17 +33,24 @@ namespace HomeMonitor.Security
         Dictionary<String, AlarmSensor> sensors = new Dictionary<String, AlarmSensor>();
         Dictionary<String, AlarmSwitchDevice> devices = new Dictionary<String, AlarmSwitchDevice>();
 
+
+        /*
+         * AlarmState   Switch
+         * Status       Text
+         * LastAlarm    DateTime
+         */ 
+
         public Zone(ZoneConfig config, IBus bus)
             : base(bus)
         {
             
             bus.Subscribe<SecuritySensorAlertMessage>(msg => SensorAlertEvent(msg), new ShapeToFilter<SecuritySensorAlertMessage>(alertMsg => (sensors.Where(x => ((x.Value.isActive()) && (x.Value.InstanceId == alertMsg.InstanceId))).Count() > 0)));
-            //bus.Subscribe<SecuritySensorAlertMessage>(msg => SensorAlertEvent(msg), new ShapeToFilter<SecuritySensorAlertMessage>(alertMsg => (sensors.Where(x => (x.Value.channel.UniqueId == alertMsg.channel.UniqueId) && x.Value.isActive(Sensitivity)).Count()>0)));
 
-
+            
             Id = config.Id;
             Name = config.Name;
 
+            //Load sensors and map to channels
             foreach (AlarmDeviceConfig deviceConfig in config.Devices) {
                 Channel channel = ThingRegistry.GetChannel(deviceConfig.ThingId, deviceConfig.ChannelId);
 

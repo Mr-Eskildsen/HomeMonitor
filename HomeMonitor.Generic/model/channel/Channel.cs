@@ -64,18 +64,17 @@ namespace HomeMonitor.model
         {
             Channel channel = null;
             switch (config.ChannelType)
-            //switch (config.Id)
             {
                 case ChannelType.Battery:
-                    channel = new SensorBattery(thingId, thingConfig, config, bus);
+                    channel = new ChannelBattery(thingId, thingConfig, config, bus);
                     break;
 
                 case ChannelType.Contact:
-                    channel = new SensorContact(thingId, thingConfig, config, bus);
+                    channel = new ChannelContact(thingId, thingConfig, config, bus);
                     break;
                     
                 case ChannelType.Tamper:
-                    channel = new SensorTamper(thingId, thingConfig, config, bus);
+                    channel = new ChannelTamper(thingId, thingConfig, config, bus);
                     break;
 
                 case ChannelType.Switch:

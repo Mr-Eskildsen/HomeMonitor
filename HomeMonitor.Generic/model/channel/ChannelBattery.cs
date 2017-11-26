@@ -12,23 +12,19 @@ using System.Threading.Tasks;
 
 namespace HomeMonitor.model.sensor
 {
-    public class SensorBattery : SensorNumber
+    public class ChannelBattery : ChannelNumber
     {
         //HEST private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         //HEST private static readonly log4net.ILog alarmLog = log4net.LogManager.GetLogger(typeof(AlarmExtensions));
 
-        public SensorBattery(String thingId, ThingConfig thingConfig, ChannelConfig config, IBus bus) 
+        public ChannelBattery(String thingId, ThingConfig thingConfig, ChannelConfig config, IBus bus) 
             : base(thingId, thingConfig, config, bus)
         {
             //State = "0";
         }
         
 
-        public override int GetScore()
-        {
-            return Convert.ToInt32(State);
-        }
-
+        
         
          public override bool updateState(ChannelStateMessage csm)
         {
