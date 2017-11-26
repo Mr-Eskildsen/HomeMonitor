@@ -99,13 +99,13 @@ namespace HomeMonitor.UnitTest
             Assert.AreEqual(channel.Id, configDevice.ChannelId);
             Assert.AreEqual(channel.State, null);
 
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, channel, true, ContactStates.CLOSED));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, channel, true, ContactStates.CLOSED));
             Assert.AreEqual(channel.State, ContactStates.CLOSED.ToString());
             
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, channel, true, ContactStates.OPEN));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, channel, true, ContactStates.OPEN));
             Assert.AreEqual(channel.State, ContactStates.OPEN.ToString());
 
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, channel, true, ContactStates.CLOSED));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, channel, true, ContactStates.CLOSED));
             Assert.AreEqual(channel.State, ContactStates.CLOSED.ToString());
 
         }
@@ -123,13 +123,13 @@ namespace HomeMonitor.UnitTest
             Assert.AreEqual(chPir.ThingId, configDevice.ThingId);
             Assert.AreEqual(chPir.Id, configDevice.ChannelId);
 
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, chPir, true, ContactStates.CLOSED));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, chPir, true, ContactStates.CLOSED));
             Assert.AreEqual(chPir.State, ContactStates.CLOSED.ToString());
 
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, chPir, true, ContactStates.OPEN));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, chPir, true, ContactStates.OPEN));
             Assert.AreEqual(chPir.State, ContactStates.OPEN.ToString());
 
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, chPir, true, ContactStates.CLOSED));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, chPir, true, ContactStates.CLOSED));
             Assert.AreEqual(chPir.State, ContactStates.CLOSED.ToString());
         }
         */
@@ -146,13 +146,13 @@ namespace HomeMonitor.UnitTest
             Assert.AreEqual(chPir.ThingId, configDevice.ThingId);
             Assert.AreEqual(chPir.Id, configDevice.ChannelId);
 
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, chPir, true, ContactStates.CLOSED));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, chPir, true, ContactStates.CLOSED));
             Assert.AreEqual(chPir.State, ContactStates.CLOSED.ToString());
 
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, chPir, true, ContactStates.OPEN));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, chPir, true, ContactStates.OPEN));
             Assert.AreEqual(chPir.State, ContactStates.OPEN.ToString());
 
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, chPir, true, ContactStates.CLOSED));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, chPir, true, ContactStates.CLOSED));
             Assert.AreEqual(chPir.State, ContactStates.CLOSED.ToString());
         }
 
@@ -170,13 +170,13 @@ namespace HomeMonitor.UnitTest
             Assert.AreEqual(chPir.ThingId, configDevice.ThingId);
             Assert.AreEqual(chPir.Id, configDevice.ChannelId);
 
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, chPir, true, ContactStates.CLOSED));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, chPir, true, ContactStates.CLOSED));
             Assert.AreEqual(chPir.State, ContactStates.CLOSED.ToString());
 
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, chPir, true, ContactStates.OPEN));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, chPir, true, ContactStates.OPEN));
             Assert.AreEqual(chPir.State, ContactStates.OPEN.ToString());
 
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, chPir, true, ContactStates.CLOSED));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, chPir, true, ContactStates.CLOSED));
             Assert.AreEqual(chPir.State, ContactStates.CLOSED.ToString());
         }
 
@@ -195,13 +195,13 @@ namespace HomeMonitor.UnitTest
             Assert.AreEqual(chSwitch.ThingId, configDevice.ThingId);
             Assert.AreEqual(chSwitch.Id, configDevice.ChannelId);
 
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, chSwitch, true, SwitchStates.OFF));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, chSwitch, true, SwitchStates.OFF));
             Assert.AreEqual(chSwitch.State, SwitchStates.OFF.ToString());
 
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, chSwitch, true, SwitchStates.ON));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, chSwitch, true, SwitchStates.ON));
             Assert.AreEqual(chSwitch.State, SwitchStates.ON.ToString());
 
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, chSwitch, true, SwitchStates.OFF));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, chSwitch, true, SwitchStates.OFF));
             Assert.AreEqual(chSwitch.State, SwitchStates.OFF.ToString());
         }
 
@@ -214,7 +214,7 @@ namespace HomeMonitor.UnitTest
             string triggerThingId = (string)TestContext.DataRow["Trigger-ThingId"];
             string triggerChannelId = (string)TestContext.DataRow["Trigger-ChannelId"];
             int currentSensitivity = 5;
-            Zone zone = SecurityAlarmMgr.Instance.GetZoneById("zone1");
+            AlarmZone zone = SecurityAlarmMgr.Instance.GetAlarmZoneById("zone1");
             //Channel chTrigger = ThingRegistry.GetChannel("testpir1", "state");
             Channel chTrigger = ThingRegistry.GetChannel(triggerThingId, triggerChannelId); 
             Channel chSwitch1 = ThingRegistry.GetChannel("testswitch1", "state1");
@@ -223,7 +223,7 @@ namespace HomeMonitor.UnitTest
             ZoneConfig configZone = currentSecurityConfig.Zones.First<ZoneConfig>(controlZone => controlZone.Id == zone.Id);
             Assert.AreEqual(zone.Id, configZone.Id);
 
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, chTrigger, true, ContactStates.CLOSED));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, chTrigger, true, ContactStates.CLOSED));
             Assert.AreEqual(chTrigger.State, ContactStates.CLOSED.ToString());
             Assert.AreEqual(chSwitch1.State, SwitchStates.OFF.ToString());
             Assert.AreEqual(chSwitch2.State, SwitchStates.OFF.ToString());
@@ -235,7 +235,7 @@ namespace HomeMonitor.UnitTest
             
 
             //Alert from Pir
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, chTrigger, true, ContactStates.OPEN));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, chTrigger, true, ContactStates.OPEN));
             
             Thread.Sleep(100);   //Make sure message is published
             Assert.AreEqual(chTrigger.State, ContactStates.OPEN.ToString());
@@ -258,7 +258,7 @@ namespace HomeMonitor.UnitTest
             Assert.AreEqual(chSwitch1.State, SwitchStates.OFF.ToString());
             Assert.AreEqual(chSwitch2.State, SwitchStates.OFF.ToString());
 
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, chTrigger, true, ContactStates.CLOSED));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, chTrigger, true, ContactStates.CLOSED));
 
             Thread.Sleep(100);   //Make sure message is published
             Assert.AreEqual(chTrigger.State, ContactStates.CLOSED.ToString());
@@ -270,7 +270,7 @@ namespace HomeMonitor.UnitTest
         [TestMethod]
         public void ManualOnOverridesAutomatic1()
         {
-            Zone zone = SecurityAlarmMgr.Instance.GetZoneById("zone1");
+            AlarmZone zone = SecurityAlarmMgr.Instance.GetAlarmZoneById("zone1");
             Channel chPir = ThingRegistry.GetChannel("testpir1", "state");
             Channel chSwitch1 = ThingRegistry.GetChannel("testswitch1", "state1");
             Channel chSwitch2 = ThingRegistry.GetChannel("testswitch1", "state2");
@@ -278,7 +278,7 @@ namespace HomeMonitor.UnitTest
             ZoneConfig configZone = currentSecurityConfig.Zones.First<ZoneConfig>(controlZone => controlZone.Id == zone.Id);
             Assert.AreEqual(zone.Id, configZone.Id);
 
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, chPir, true, ContactStates.CLOSED));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, chPir, true, ContactStates.CLOSED));
             Assert.AreEqual(chPir.State, ContactStates.CLOSED.ToString());
             Assert.AreEqual(chSwitch1.State, SwitchStates.OFF.ToString());
             Assert.AreEqual(chSwitch2.State, SwitchStates.OFF.ToString());
@@ -290,13 +290,13 @@ namespace HomeMonitor.UnitTest
 
 
             //"Manual" turn on switch1
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, chSwitch1, true, SwitchStates.ON));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, chSwitch1, true, SwitchStates.ON));
             Assert.AreEqual(chPir.State, ContactStates.CLOSED.ToString());
             Assert.AreEqual(chSwitch1.State, SwitchStates.ON.ToString());
             Assert.AreEqual(chSwitch2.State, SwitchStates.OFF.ToString());
 
             //Alert from Pir
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, chPir, true, ContactStates.OPEN));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, chPir, true, ContactStates.OPEN));
 
             Thread.Sleep(100);   //Make sure message is published
 
@@ -305,7 +305,7 @@ namespace HomeMonitor.UnitTest
             Assert.AreEqual(chSwitch2.State, SwitchStates.ON.ToString());
 
             //"Manual" turn on switch1
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, chSwitch1, true, SwitchStates.OFF));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, chSwitch1, true, SwitchStates.OFF));
 
             Thread.Sleep(100);   //Make sure message is published
             Assert.AreEqual(chPir.State, ContactStates.OPEN.ToString());
@@ -319,7 +319,7 @@ namespace HomeMonitor.UnitTest
             Assert.AreEqual(chSwitch2.State, SwitchStates.OFF.ToString());
 
 
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, chPir, true, ContactStates.CLOSED));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, chPir, true, ContactStates.CLOSED));
 
             Thread.Sleep(100);   //Make sure message is published
             Assert.AreEqual(chPir.State, ContactStates.CLOSED.ToString());
@@ -343,7 +343,7 @@ namespace HomeMonitor.UnitTest
             ZoneConfig configZone = currentSecurityConfig.Zones.First<ZoneConfig>(controlZone => controlZone.Id == zone.Id);
             Assert.AreEqual(zone.Id, configZone.Id);
 
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, chTrigger, true, ContactStates.CLOSED));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, chTrigger, true, ContactStates.CLOSED));
             Assert.AreEqual(chTrigger.State, ContactStates.CLOSED.ToString());
             Assert.AreEqual(chSwitch1.State, SwitchStates.OFF.ToString());
             Assert.AreEqual(chSwitch2.State, SwitchStates.OFF.ToString());
@@ -355,7 +355,7 @@ namespace HomeMonitor.UnitTest
 
 
             //Alert from Pir
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, chTrigger, true, ContactStates.OPEN));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, chTrigger, true, ContactStates.OPEN));
 
             Thread.Sleep(10);   //Make sure message is published
             Assert.AreEqual(chTrigger.State, ContactStates.OPEN.ToString());
@@ -378,7 +378,7 @@ namespace HomeMonitor.UnitTest
             Assert.AreEqual(chSwitch1.State, SwitchStates.OFF.ToString());
             Assert.AreEqual(chSwitch2.State, SwitchStates.OFF.ToString());
 
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, chTrigger, true, ContactStates.CLOSED));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, chTrigger, true, ContactStates.CLOSED));
 
             Thread.Sleep(10);   //Make sure message is published
             Assert.AreEqual(chTrigger.State, ContactStates.CLOSED.ToString());
@@ -390,7 +390,7 @@ namespace HomeMonitor.UnitTest
         [TestMethod]
         public void TestSensitivity()
         {
-            Zone zone = SecurityAlarmMgr.Instance.GetZoneById("zone1");
+            AlarmZone zone = SecurityAlarmMgr.Instance.GetAlarmZoneById("zone1");
             
             Channel chPir = ThingRegistry.GetChannel("testpir1", "state");
             Channel chWindow = ThingRegistry.GetChannel("testpir1", "state");
@@ -400,8 +400,8 @@ namespace HomeMonitor.UnitTest
             ZoneConfig configZone = currentSecurityConfig.Zones.First<ZoneConfig>(controlZone => controlZone.Id == zone.Id);
             Assert.AreEqual(zone.Id, configZone.Id);
 
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, chPir, true, ContactStates.CLOSED));
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, chWindow, true, ContactStates.CLOSED));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, chPir, true, ContactStates.CLOSED));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, chWindow, true, ContactStates.CLOSED));
 
             Assert.AreEqual(chPir.State, ContactStates.CLOSED.ToString());
             Assert.AreEqual(chWindow.State, ContactStates.CLOSED.ToString());
@@ -436,7 +436,7 @@ namespace HomeMonitor.UnitTest
         [TestMethod]
         public void ManualOnOverridesAutomatic2()
         {
-            Zone zone = SecurityAlarmMgr.Instance.GetZoneById("zone1");
+            AlarmZone zone = SecurityAlarmMgr.Instance.GetAlarmZoneById("zone1");
             Channel chPir = ThingRegistry.GetChannel("testpir1", "state");
             Channel chSwitch1 = ThingRegistry.GetChannel("testswitch1", "state1");
             Channel chSwitch2 = ThingRegistry.GetChannel("testswitch1", "state2");
@@ -444,9 +444,9 @@ namespace HomeMonitor.UnitTest
             ZoneConfig configZone = currentSecurityConfig.Zones.First<ZoneConfig>(controlZone => controlZone.Id == zone.Id);
             Assert.AreEqual(zone.Id, configZone.Id);
 
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, chPir, true, ContactStates.CLOSED));
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, chSwitch1, true, SwitchStates.OFF));
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, chSwitch2, true, SwitchStates.OFF));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, chPir, true, ContactStates.CLOSED));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, chSwitch1, true, SwitchStates.OFF));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, chSwitch2, true, SwitchStates.OFF));
             Assert.AreEqual(chPir.State, ContactStates.CLOSED.ToString());
             Assert.AreEqual(chSwitch1.State, SwitchStates.OFF.ToString());
             Assert.AreEqual(chSwitch2.State, SwitchStates.OFF.ToString());
@@ -462,26 +462,26 @@ namespace HomeMonitor.UnitTest
             
             
             //Alert from Pir
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, chPir, true, ContactStates.OPEN));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, chPir, true, ContactStates.OPEN));
             Thread.Sleep(100);   //Make sure message is published
             Assert.AreEqual(chPir.State, ContactStates.OPEN.ToString());
             Assert.AreEqual(chSwitch1.State, SwitchStates.ON.ToString());
             Assert.AreEqual(chSwitch2.State, SwitchStates.ON.ToString());
 
             //"Manual" turn on switch1
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, chSwitch1, true, SwitchStates.ON));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, chSwitch1, true, SwitchStates.ON));
             Assert.AreEqual(chPir.State, ContactStates.OPEN.ToString());
             Assert.AreEqual(chSwitch1.State, SwitchStates.ON.ToString());
             Assert.AreEqual(chSwitch2.State, SwitchStates.ON.ToString());
 
             //"Manual" turn off switch1
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, chSwitch1, true, SwitchStates.OFF));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, chSwitch1, true, SwitchStates.OFF));
             Assert.AreEqual(chPir.State, ContactStates.OPEN.ToString());
             Assert.AreEqual(chSwitch1.State, SwitchStates.OFF.ToString());
             Assert.AreEqual(chSwitch2.State, SwitchStates.ON.ToString());
 
             //"Manual" turn on switch1
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, chSwitch1, true, SwitchStates.ON));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, chSwitch1, true, SwitchStates.ON));
             Assert.AreEqual(chPir.State, ContactStates.OPEN.ToString());
             Assert.AreEqual(chSwitch1.State, SwitchStates.ON.ToString());
             Assert.AreEqual(chSwitch2.State, SwitchStates.ON.ToString());
@@ -495,13 +495,13 @@ namespace HomeMonitor.UnitTest
             Assert.AreEqual(chSwitch2.State, SwitchStates.OFF.ToString());
 
             //Turn off switch 1 also
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, chSwitch1, true, SwitchStates.OFF));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, chSwitch1, true, SwitchStates.OFF));
             Assert.AreEqual(chPir.State, ContactStates.OPEN.ToString());
             Assert.AreEqual(chSwitch1.State, SwitchStates.OFF.ToString());
             Assert.AreEqual(chSwitch2.State, SwitchStates.OFF.ToString());
             
             //Release Pir sennsor
-            mockupBus.Publish(new ChannelStateMessage(string.Empty, chPir, true, ContactStates.CLOSED));
+            mockupBus.Publish(new ChannelStateReceived(string.Empty, chPir, true, ContactStates.CLOSED));
             Assert.AreEqual(chPir.State, ContactStates.CLOSED.ToString());
             Assert.AreEqual(chSwitch1.State, SwitchStates.OFF.ToString());
             Assert.AreEqual(chSwitch2.State, SwitchStates.OFF.ToString());

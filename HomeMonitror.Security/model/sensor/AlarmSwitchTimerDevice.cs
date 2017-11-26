@@ -22,14 +22,14 @@ namespace HomeMonitror.Security.model.sensor
         private static readonly ILog stateLog = LogManager.GetLogger(typeof(AlarmExtensions));
         protected int Timeout { get; set; }
 
-        protected AlarmSwitchTimerDevice(AlarmSwitchConfig config, Zone zone, Channel ch, MemBus.IBus bus)
+        protected AlarmSwitchTimerDevice(AlarmSwitchConfig config, AlarmZone zone, Channel ch, MemBus.IBus bus)
             : base (config, zone, ch, bus)
         {
             Timeout = config.Timeout;
         }
 
 
-        public static AlarmDevice CreateDevice(AlarmSwitchConfig config, Zone zone, Channel ch, MemBus.IBus bus)
+        public static AlarmDevice CreateDevice(AlarmSwitchConfig config, AlarmZone zone, Channel ch, MemBus.IBus bus)
         {
             return (AlarmDevice)new AlarmSwitchTimerDevice(config, zone, ch, bus);
         }

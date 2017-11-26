@@ -17,8 +17,8 @@ namespace HomeMonitor.model.sensor
         //HEST private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         //HEST private static readonly log4net.ILog alarmLog = log4net.LogManager.GetLogger(typeof(AlarmExtensions));
 
-        public ChannelBattery(String thingId, ThingConfig thingConfig, ChannelConfig config, IBus bus) 
-            : base(thingId, thingConfig, config, bus)
+        public ChannelBattery(String thingId, string thingGroup, ChannelConfig config, IBus bus) 
+            : base(thingId, thingGroup, config, bus)
         {
             //State = "0";
         }

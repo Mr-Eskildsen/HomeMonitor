@@ -206,7 +206,7 @@ namespace HomeMonitor.Mqtt
                 }
 
                 //Channel state has changed -> Publish
-                message = new ChannelStateMessage(string.Empty, ch, true, Payload);
+                message = new ChannelStateReceived(string.Empty, ch, true, Payload);
             }
         
 

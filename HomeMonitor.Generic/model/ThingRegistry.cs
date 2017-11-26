@@ -82,6 +82,21 @@ namespace HomeMonitor.model
             return instance._GetChannel(ThingId, ChannelId);
         }
 
+        public static Thing CreateThing(string id, string name, string description)
+        {
+            return instance._CreateThing(id, name, description);
+        }
+
+
+        private Thing _CreateThing(string id, string name, string description)
+        {
+            ThingConfig thingConfig = new ThingConfig();
+            thingConfig.Id = id;
+            thingConfig.Name = name;
+            thingConfig.Description = description;
+
+            return new Thing(thingConfig);
+        }
 
         private bool _ClearData()
         {
@@ -137,7 +152,7 @@ namespace HomeMonitor.model
                 foreach (ChannelConfig channelConfig in thingConfig.Channels)
                 {
                     
-                    Channel ch = Channel.Create(thing.Id, thingConfig, channelConfig, bus);
+                    Channel ch = Channel.Create(thing.Id, thingConfig.Group, channelConfig, bus);
                     
                     if (ch != null)
                     {

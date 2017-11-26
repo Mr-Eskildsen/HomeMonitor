@@ -29,7 +29,7 @@ namespace HomeMonitror.Security.model.sensor
 
         public virtual bool IsSensor() { return false; }
 
-        protected AlarmDevice(AlarmDeviceConfig config, Zone zone, Channel ch, IBus bus)
+        protected AlarmDevice(AlarmDeviceConfig config, AlarmZone zone, Channel ch, IBus bus)
             : base(ch, bus)
         {
             Disabled = false;
@@ -40,7 +40,7 @@ namespace HomeMonitror.Security.model.sensor
 
 
 
-        public static AlarmDevice Create(AlarmDeviceConfig config, Zone zone, Channel ch, IBus bus)
+        public static AlarmDevice Create(AlarmDeviceConfig config, AlarmZone zone, Channel ch, IBus bus)
         {
             AlarmDevice device = null;
             

@@ -14,11 +14,11 @@ namespace HomeMonitror.Security.model.sensor
     public abstract class AlarmSwitchDevice : AlarmDevice
     {
         private AlarmSwitchConfig config;
-        private Zone zone;
+        private AlarmZone zone;
         private Channel ch;
         private IBus bus;
 
-        protected AlarmSwitchDevice(AlarmSwitchConfig config, Zone zone, Channel ch, MemBus.IBus bus)
+        protected AlarmSwitchDevice(AlarmSwitchConfig config, AlarmZone zone, Channel ch, MemBus.IBus bus)
             : base (config, zone, ch, bus)
         {
 

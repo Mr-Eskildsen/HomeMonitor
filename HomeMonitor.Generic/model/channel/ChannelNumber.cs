@@ -12,8 +12,8 @@ namespace HomeMonitor.model.sensor
     {
         //HEST private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        public ChannelNumber(String thingId, ThingConfig thingConfig, ChannelConfig config, IBus bus)
-                : base(thingId, thingConfig, config, bus)
+        public ChannelNumber(String thingId, string thingGroup, ChannelConfig config, IBus bus)
+                : base(thingId, thingGroup, config, bus)
         {
             //State = "0";
         }

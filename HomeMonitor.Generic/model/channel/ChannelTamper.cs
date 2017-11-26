@@ -13,8 +13,8 @@ namespace HomeMonitor.model.sensor
     {
         //HEST private static readonly log4net.ILog alarmLog = log4net.LogManager.GetLogger(typeof(AlarmExtensions));
 
-        public ChannelTamper(String thingId, ThingConfig thingConfig,  ChannelConfig config, IBus bus)
-            : base(thingId, thingConfig, config, bus)
+        public ChannelTamper(String thingId, string thingGroup,  ChannelConfig config, IBus bus)
+            : base(thingId, thingGroup, config, bus)
         {
             //State = ContactStates.CLOSED.ToString();
         }

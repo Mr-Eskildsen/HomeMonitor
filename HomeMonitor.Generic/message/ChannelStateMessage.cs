@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HomeMonitor.message
 {
-    public class ChannelStateMessage : SecurityStateMessage
+    public abstract class ChannelStateMessage : SecurityStateMessage
     {
 
         public string ChannelId { get; private set; }

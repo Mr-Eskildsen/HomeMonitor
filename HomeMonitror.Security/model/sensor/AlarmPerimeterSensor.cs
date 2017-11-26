@@ -15,7 +15,7 @@ namespace HomeMonitror.Security.model.sensor
     {
 
 
-        protected AlarmPerimeterSensor(AlarmSensorConfig config, Zone zone, Channel ch, IBus bus)
+        protected AlarmPerimeterSensor(AlarmSensorConfig config, AlarmZone zone, Channel ch, IBus bus)
             : base (config, zone, ch, bus)
         {
             //Set default value
@@ -28,7 +28,7 @@ namespace HomeMonitror.Security.model.sensor
         }
 
 
-        public static AlarmSensor CreateSensor(AlarmSensorConfig config, Zone zone, Channel ch, IBus bus)
+        public static AlarmSensor CreateSensor(AlarmSensorConfig config, AlarmZone zone, Channel ch, IBus bus)
         {
             return (AlarmSensor)new AlarmPerimeterSensor(config, zone, ch, bus);
         }

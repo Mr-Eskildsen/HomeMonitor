@@ -25,6 +25,7 @@ using HomeMonitor.message.alert;
 using HomeMonitror.Security.xml;
 using HomeMonitor.notification;
 using HomeMonitor.Generic.interfaces;
+using HomeMonitor.model.channel;
 
 namespace HomeMonitror.Security
 {
@@ -39,19 +40,24 @@ namespace HomeMonitror.Security
 
         private volatile bool canArmHysteresis = true;
 
-        private List<Zone> zones = new List<Zone>();
+        private List<AlarmZone> zones = new List<AlarmZone>();
+        private Thing securityMgrThing = null;
+
+        //private const CHANNEL_ALARM = "alarm";
+        //private const CHANNEL_STATUS = "status";
+        //private const CHANNEL_LEVEL = "level";
 
         //        protected event EventHandler<SecurityAlarmSystemEventArgs> systemEventHandler;
 
 
 
-            /*
-        protected override void OnRaiseAlert(object sender, SecurityAlarmAlertEventArgs e)
-        {
+        /*
+    protected override void OnRaiseAlert(object sender, SecurityAlarmAlertEventArgs e)
+    {
 
-            alarmLog.AlarmAlertFormat(e.ThingId, "Sensor '{0}:{1}' has raised an ALERT", e.ThingId, e.ChannelId);
-        }
-        */
+        alarmLog.AlarmAlertFormat(e.ThingId, "Sensor '{0}:{1}' has raised an ALERT", e.ThingId, e.ChannelId);
+    }
+    */
 
         //HEST private SecurityConfig config;
         private int _sensitivity = -2;
@@ -111,11 +117,24 @@ namespace HomeMonitror.Security
                 config = securityConfig;
             }
 
-            try { 
+            try {
+                string thingId = Guid.NewGuid().ToString();
+                string thingName = String.Empty;
+                string thingDescription = String.Empty;
+                string thingGroup = String.Empty;
+
+                securityMgrThing = ThingRegistry.CreateThing(thingId, thingName, thingDescription);
+                //TODO:: Move creation to Channel.Create method
+                //securityMgrThing.addChannel(new ChannelSwitch(thingId, thingGroup, CHANNEL_STATUS, ChannelType.Switch, bus));
+                //securityMgrThing.addChannel(new ChannelText(thingId, thingGroup, CHANNEL_ARMED_LEVEL, ChannelType.Text, bus));
+                //securityMgrThing.addChannel(new ChannelText(thingId, thingGroup, CHANNEL_STATUS, ChannelType.Text, bus));
+
+
+
                 foreach (ZoneConfig zoneConfig in config.Zones)
                 {
                     log.DebugFormat("'LoadConfig': Procssesing zone '{0}'", zoneConfig.Name);
-                    Zone zone = new Zone(zoneConfig, _bus);
+                    AlarmZone zone = new AlarmZone(zoneConfig, _bus);
 
                     zones.Add(zone);
                     AddChild(zone);
@@ -133,9 +152,9 @@ namespace HomeMonitror.Security
 
         }
 
-        public Zone GetZoneById(string id)
+        public AlarmZone GetAlarmZoneById(string id)
         {
-            return zones.Single<Zone>(zone => zone.Id == id);
+            return zones.Single<AlarmZone>(zone => zone.Id == id);
         }
 
         public void ArmSystem(int sensitivity)
@@ -146,7 +165,7 @@ namespace HomeMonitror.Security
 
             if (_updateSystemStatus(sensitivity))
             {
-                foreach (Zone zone in zones)
+                foreach (AlarmZone zone in zones)
                     if (wasArmed)
                     {
                         zone.SystemSensitivityChanged(prevSensitivity, newSensitivity);
@@ -168,7 +187,7 @@ namespace HomeMonitror.Security
             if (_updateSystemStatus(0))
             {
                 
-                foreach (Zone zone in zones)
+                foreach (AlarmZone zone in zones)
                     zone.SystemDisarmed();
 
                 alarmLog.AlarmInfo("SecurityAlarmMgr", "Alarm is DISARMED");

@@ -21,8 +21,8 @@ namespace HomeMonitor.model.sensor
         private static readonly ILog alarmLog = LogManager.GetLogger(typeof(AlarmExtensions));
         private static readonly ILog stateLog = LogManager.GetLogger(typeof(AlarmExtensions)); //= LogManager.GetLogger("StateLogger");
 
-        public ChannelContact(String thingId, ThingConfig thingConfig, ChannelConfig config, IBus bus)
-            : base(thingId, thingConfig, config, bus)
+        public ChannelContact(String thingId, string thingGroup, ChannelConfig config, IBus bus)
+            : base(thingId, thingGroup, config, bus)
         {
 
         }

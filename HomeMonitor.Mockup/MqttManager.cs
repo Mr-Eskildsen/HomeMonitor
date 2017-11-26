@@ -104,19 +104,7 @@ namespace HomeMonitor.Mqtt
             return topic + "/";
         }
 
-
-        /*
-        protected void PublishInternal(String subTopic, String Payload)
-        {
-
-            foreach (string baseIncommingTopic in baseIncommingTopics)
-            {
-            Bør være outbound???+
-                client.Publish(baseIncommingTopic + "in/" + subTopic, Encoding.ASCII.GetBytes(Payload), MqttQosLevel.QOS_LEVEL_AT_LEAST_ONCE, true);
-            }
-            
-        }
-        */
+                
 
         protected void PublishToMqttBus( MqttPublishChannel channel, string subTopic, String Payload)
         {
@@ -140,74 +128,7 @@ namespace HomeMonitor.Mqtt
             client.Publish(topic, Encoding.ASCII.GetBytes(Payload), MqttQosLevel.QOS_LEVEL_AT_LEAST_ONCE, true);
         }
 
-
-        //UNDULAT 
-        /*
-        static void client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
-        {
-            // handle message received 
-            string[] arr = e.Topic.Split('/');
-            String thingId = arr[arr.Length - 2];
-            String channelId = arr[arr.Length - 1];
-
-            SecurityStateMessage message = null;
-
-            //System Command!
-            if ((thingId == "system") && (channelId == "command"))
-            {
-
-                    string Payload = Encoding.Default.GetString(e.Message);
-                    string[] tokens = Payload.Split(':');
-                    string command = tokens[0];
-                int sensitivity;
-
-                switch (command)
-                    {
-                        case "arm":
-                            sensitivity = Convert.ToInt32(tokens[1]);
-                            message = new SecuritySystemStateMessage(AlarmSystemCommand.arm, sensitivity.ToString(), string.Empty);
-                            break;
-                        case "disarm":
-                            message = new SecuritySystemStateMessage(AlarmSystemCommand.disarm, string.Empty, string.Empty);
-                            //SecurityAlarmMgr.Instance.DisarmSystem();
-                            break;
-                    case "sensitivity":
-                        sensitivity = Convert.ToInt32(tokens[1]);
-                        message = new SecuritySystemStateMessage(AlarmSystemCommand.sensitivity, sensitivity.ToString(), string.Empty);
-                        break;
-                    default:
-                        throw new NotImplementedException();
-                    }
-
-
-
-            }
-            else
-            {
-                Thing thing = ThingRegistry.GetThing(thingId);
-
-
-                //Thing doesn't exist in Registry
-                if (thing == null)
-                {
-                    return;
-                }
-
-                Channel ch = thing.getChannel(channelId);
-                if (ch == null)
-                    return;
-
-                //Channel state has changed -> Publish
-                message = new ChannelStateMessage(string.Empty, ch, Encoding.Default.GetString(e.Message));
-
-            }
-
-            if (message != null) {
-                Instance.Publish(message);
-            }
-
-        }
-        */
+        
 
 
         protected void Publish(IBusMessage message)

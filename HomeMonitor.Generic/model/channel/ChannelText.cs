@@ -9,12 +9,12 @@ using MemBus;
 
 namespace HomeMonitor.model.channel
 {
-    class ChannelText : Channel
+    public class ChannelText : Channel
     {
         //HEST private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        public ChannelText(String thingId, ThingConfig thingConfig, ChannelConfig config, IBus bus)
-                : base(thingId, thingConfig, config, bus)
+        public ChannelText(String thingId, string thingGroup, string channelId, ChannelType channelType, IBus bus)
+                : base(thingId, thingGroup, channelId, channelType, bus)
         {
             //State = "0";
         }

@@ -26,7 +26,7 @@ namespace HomeMonitror.Security.model.sensor
         public abstract int GetScore();
         public abstract Boolean isPerimeter();
 
-        protected AlarmSensor(AlarmSensorConfig config, Zone zone, Channel ch, IBus bus)
+        protected AlarmSensor(AlarmSensorConfig config, AlarmZone zone, Channel ch, IBus bus)
             : base(config, zone, ch, bus)
         {
         }

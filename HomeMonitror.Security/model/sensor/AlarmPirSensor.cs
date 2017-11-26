@@ -14,7 +14,7 @@ namespace HomeMonitror.Security.model.sensor
     public class AlarmPirSensor : AlarmSensor
     {
 
-        protected AlarmPirSensor(AlarmSensorConfig config, Zone zone, Channel ch, IBus bus)
+        protected AlarmPirSensor(AlarmSensorConfig config, AlarmZone zone, Channel ch, IBus bus)
             : base(config, zone, ch, bus)
         {
             //Set default value
@@ -25,7 +25,7 @@ namespace HomeMonitror.Security.model.sensor
         }
 
 
-        public static AlarmSensor CreateSensor(AlarmSensorConfig config, Zone zone, Channel ch, IBus bus)
+        public static AlarmSensor CreateSensor(AlarmSensorConfig config, AlarmZone zone, Channel ch, IBus bus)
         {
             return (AlarmSensor)new AlarmPirSensor(config, zone, ch, bus);
         }

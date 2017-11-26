@@ -68,8 +68,16 @@ namespace HomeMonitor.Generic.xml
         [XmlEnum("switch")]
         Switch = 1,
 
-        //[XmlEnum("number")]
-        //Number = 2,
+        [XmlEnum("text")]
+        Text = 2,
+
+        [XmlEnum("number")]
+        Number = 3,
+
+
+        [XmlEnum("datetime")]
+        DateTime = 3,
+
 
         [XmlEnum("battery")]
         Battery = 98,

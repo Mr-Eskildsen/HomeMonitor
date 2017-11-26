@@ -24,7 +24,7 @@ namespace HomeMonitor.model.device
         private int internalActivateCount = 0;
         private int externalActivateCount = 0;
 
-        public DeviceSwitch(string thingId, ThingConfig thingConfig, ChannelConfig config, IBus bus) : base(thingId, thingConfig, config, bus)
+        public DeviceSwitch(string thingId, string thingGroup, ChannelConfig config, IBus bus) : base(thingId, thingGroup, config, bus)
         {
             State = SwitchStates.OFF.ToString();
         }

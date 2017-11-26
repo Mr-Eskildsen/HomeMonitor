@@ -16,11 +16,16 @@ using HomeMonitor.message;
 using MemBus.Subscribing;
 using log4net;
 using HomeMonitror.Security.xml;
+using HomeMonitor.model.channel;
 
 namespace HomeMonitor.Security
 {
-    public class Zone : AlarmGenericItem
+    public class AlarmZone : AlarmGenericItem
     {
+        //private static string CHANNEL_STATE = "state";
+        private static string CHANNEL_ALARM = "alarm";
+        private static string CHANNEL_STATUS = "status";
+        private static string THING_GROUP_ALARM = "alarm";
 
         private static readonly log4net.ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static readonly log4net.ILog alarmLog = LogManager.GetLogger(typeof(AlarmExtensions));
@@ -40,7 +45,7 @@ namespace HomeMonitor.Security
          * LastAlarm    DateTime
          */ 
 
-        public Zone(ZoneConfig config, IBus bus)
+        public AlarmZone(ZoneConfig config, IBus bus)
             : base(bus)
         {
             
@@ -49,6 +54,23 @@ namespace HomeMonitor.Security
             
             Id = config.Id;
             Name = config.Name;
+
+            string thingId = config.GetId();
+            string thingName = config.GetName();
+            string thingDescription = String.Empty;
+            string thingGroup = THING_GROUP_ALARM;
+            
+            
+            //Create Thing that represents a Zone
+            Thing alarmZoneThing = ThingRegistry.CreateThing(thingId, thingName, thingDescription);
+
+            //TODO:: Move creation to Channel.Create method
+            alarmZoneThing.addChannel(new ChannelSwitch(thingId, thingGroup, CHANNEL_ALARM, ChannelType.Switch, bus));
+            alarmZoneThing.addChannel(new ChannelText(thingId, thingGroup, CHANNEL_STATUS, ChannelType.Text, bus));
+            alarmZoneThing.addChannel(new ChannelSwitch(thingId, thingGroup, CHANNEL_STATUS, ChannelType.DateTime, bus));
+
+
+            
 
             //Load sensors and map to channels
             foreach (AlarmDeviceConfig deviceConfig in config.Devices) {
